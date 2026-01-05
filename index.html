@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《在提示中拼湊》媽媽大老遠跑來只為叫我...</title>
+    <style>
+        *{
+            height: auto;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #ec6d45;   /* 主色：暖橘 */
+            --secondary-color: #285977; /* 輔色：深藍 */
+            --accent-color: #ffcc00;    /* 其他：黃 */
+            --bg-dark: #222222;         /* 其他：黑 */
+            --bg-light: #ffffff;        /* 其他：白 */
+        }
+
+        body {
+            font-family: 'Segoe UI', Microsoft JhengHei, sans-serif;
+            /* background-color: var(--primary-color); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: var(--bg-light);
+            background: var(--primary-color) url(bg-img.jpg)  no-repeat fixed center center / auto 100%;
+        }
+
+        .player-card {
+            background-color: var(--bg-light);
+            padding: 1.4rem 2rem 1rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+            border-bottom: 8px solid var(--accent-color); /* 底部黃色裝飾線 */
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            margin: 0.7rem auto;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        p{
+            color: var(--bg-dark);
+        }
+        .btn-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .play-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 0px #b54d2d; /* 模擬按鈕厚度 */
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            background-color: var(--secondary-color);
+            box-shadow: 0 4px 0px #1a3a4f;
+        }
+
+        .play-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 0px 0px transparent;
+            background-color: var(--secondary-color);
+        }
+        .icon {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="player-card">
+    <h2>媽媽大老遠跑來<br>只為叫我...</h2>
+    <p>這件事困難到她需要用三種狀態跟我說話</p>
+    <div class="btn-list">
+        <button class="play-btn" onclick="playAudio('audio1')">
+            <span class="icon"></span>A.小心的詢問
+        </button>
+        <button class="play-btn" onclick="playAudio('audio2')">
+            <span class="icon"></span>B.積極的邀請
+        </button>
+        <button class="play-btn" onclick="playAudio('audio3')">
+            <span class="icon"></span>C.無奈的勸說
+        </button>
+    </div>
+    <p style="color: #7d7d7d;">聽出來她要我做什麼了嗎？</p>
+</div>
+
+<audio id="audio1" src="mp3/mom_1.mp3"></audio>
+<audio id="audio2" src="mp3/mom_2.mp3"></audio>
+<audio id="audio3" src="mp3/mom_3.mp3"></audio>
+
+<script>
+    function playAudio(id) {
+        // 先暫停所有正在播放的聲音
+        const allAudios = document.querySelectorAll('audio');
+        allAudios.forEach(a => {
+            a.pause();
+            a.currentTime = 0;
+        });
+
+        // 播放選定的聲音
+        const target = document.getElementById(id);
+        if (target) {
+            target.play().catch(e => {
+                alert("找不到音檔，請確認檔名是否為 " + id + ".mp3 並放在同一資料夾中。");
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
