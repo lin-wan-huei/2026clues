@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>《在提示中拼湊》媽媽大老遠跑來只為叫我...</title>
+    <link rel="icon" href="ico.png" type="image/x-icon"/>
     <style>
         *{
             height: auto;
@@ -19,14 +20,22 @@
 
         body {
             font-family: 'Segoe UI', Microsoft JhengHei, sans-serif;
-            /* background-color: var(--primary-color); */
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
             color: var(--bg-light);
             background: var(--primary-color) url(bg-img.jpg)  no-repeat fixed center center / auto 100%;
+        }
+        footer {
+            width: 100%;
+            max-width: 320px;
+            padding: 20px 5px 0px;
+            font-size: 0.8rem;
+            text-align: center;
+            color: #3b3b3b;
         }
 
         .player-card {
@@ -110,6 +119,7 @@
     </div>
     <p style="color: #7d7d7d;">聽出來她要我做什麼了嗎？</p>
 </div>
+<footer>版權所有 © 2026 林宛慧《在提示中拼湊》</footer>
 
 <audio id="audio1" src="mp3/mom_1.mp3"></audio>
 <audio id="audio2" src="mp3/mom_2.mp3"></audio>
